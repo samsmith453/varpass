@@ -1,0 +1,82 @@
+:root{
+	--nunito: 'Nunito Sans', sans-serif;
+	--opens: 'Open Sans', sans-serif;
+}
+
+body{
+	margin: 0;
+	width: 100%;
+}
+
+h1{
+	font-family: var(--opens);
+	text-align: center;
+}
+
+h3{
+	font-family: var(--nunito);
+	text-align: center;
+}
+
+#formContainer{
+	width: 100%;
+	text-align: center;
+}
+
+input {
+	width: 400px;
+	padding: 0px 10px;
+	height: 40px;
+	font-size: 25px;
+	font-family: var(--nunito);
+	font-weight: 200;
+	border: none;
+	background-color: rgba(88, 88, 88, 0.1);
+	outline: none;
+	margin: 10px;
+}
+
+input.submit {
+	width: 250px;
+	background-color: rgba(88, 88, 88, 0.3);
+
+	border: none;
+	height: 50px;
+	border-radius: 4px;
+	font-size: 15px;
+	color: white;
+	font-family: var(--opens);
+	cursor: pointer;
+	letter-spacing: 3px;
+}
+
+input.submit:hover{
+	background-color: DeepSkyBlue;
+	transition: background-color 1s;
+}
+
+
+#footerSection{
+	width: 90%;
+	margin: auto;
+}
+
+#footerSection h3{
+		font-family: var(--opens);
+		font-weight: 300;
+		font-size: 15px;
+		text-align: center;
+}
+
+#footerSection img{
+	width: 60px;
+	display: block;
+	margin: 0px auto 10px auto;
+}
+
+.borderTop{
+	width: 150px;
+	margin: auto;
+	margin-top: 100px;
+	border-top: rgba(88, 88, 88, 0.3) 2px solid;
+}

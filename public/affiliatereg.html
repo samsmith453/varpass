@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Register as an Affiliate</title>
+		<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+		<link rel="stylesheet" href="/public/css/reg.css">
+		<link rel="icon" type="image/png" href="/public/images/favicon.png">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
+
+
+
+		<script type="text/javascript">
+			$(document).ready(function(){
+				var query = window.location.search;
+				var address = getQueryStringValue(query, "email");
+				$("#email").val(address);
+			});
+
+			function getQueryStringValue (str, key) {
+				return decodeURIComponent(str.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));
+			}
+		</script>
+
+
+
+
+	</head>
+	<body>
+
+		<h1>VarPass</h1>
+		<h3>Register as an affiliate to get your code</h3>
+
+
+		<form class="" action="/regsubmission" method="post" id="formContainer">
+			<input type="text" name="name" value="" placeholder="Your Name" required><br>
+			<input id="email" type="email" name="email" value="" placeholder="Your Email Address" required><br>
+			<input type="text" name="nationality" value="" placeholder="Your nationality" required><br>
+
+
+			<input class="submit" type="submit" name="" value="Become an Ambassador">
+		</form>
+
+		<section id="footerSection">
+			<div class="borderTop"></div>
+			<h3>VarPass</h3>
+			<img src="/public/images/favicon.png" alt="">
+		</section>
+	</body>
+</html>

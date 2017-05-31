@@ -650,7 +650,7 @@ start of affiliate section*/
 	justify-content: center;
 }
 
-#affiliateSection input{
+#affiliateSection .emailInput{
 	width: 400px;
 	padding: 0px 10px;
 	height: 40px;
@@ -661,19 +661,21 @@ start of affiliate section*/
 	border: none;
 	background-color: rgba(88, 88, 88, 0.1);
 	outline: none;
+	margin: 0;
 }
 
-#affiliateSection input::placeholder{
+#affiliateSection .emailInput::placeholder{
 	color: rgba(88, 88, 88, 0.3);
 }
 
-#affiliateSection #inputContainer button{
+#affiliateSection #inputContainer .submit{
 	border: none;
 	background: none;
 	color: DeepSkyBlue;
 	cursor: pointer;
 	background-color: rgba(88, 88, 88, 0.1);
 	outline: none;
+	font-size: 25px;
 }
 
 
@@ -685,6 +687,30 @@ start of affiliate section*/
 /* end of affiliate section
 
 
+
+
+new affiliate page*/
+
+#newaffiliate{
+	width: 90%;
+	text-align: center;
+	margin: auto;
+}
+
+#newaffiliate h3{
+	font-family: var(--opens);
+	font-size: 25px;
+}
+
+#newaffiliate p{
+	font-family: var(--nunito);
+	font-size: 20px;
+}
+
+
+
+/*
+end of new affiliate page
 
 start of footer section*/
 #footerSection{

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Welcome to VarPass</title>
+
+		<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+
+
+		<link rel="icon" type="image/png" href="/public/images/favicon.png">
+		<link rel="stylesheet" href="/public/css/index.css">
+		<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
+
+		<script type="text/javascript">
+			$(document).ready(function(){
+				var query = window.location.search;
+				var email = getQueryStringValue(query, "email");
+				var name = getQueryStringValue(query, "name");
+				$("#name").append(name);
+				$("#email").append(email);
+			});
+
+			function getQueryStringValue (str, key) {
+				return decodeURIComponent(str.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));
+			}
+		</script>
+
+
+
+	</head>
+	<body>
+
+		<menu>
+			<a href="/">HOME</a>
+
+			<a href="/details">DETAILS</a>
+
+			<div class="logo">
+				VarPass
+			</div>
+
+			<a href="/join">JOIN US</a>
+
+			<a href="/affiliates"  class="currentPage">AFFILIATES</a>
+
+		</menu>
+
+		<div id="newaffiliate">
+			<h3 id="name">Welcome to VarPass </h3>
+			<p>You are now an ambassador.</p>
+			<p id="email">We have sent your affiliate link to </p>
+			<p>Share your link and get earning!</p>
+			<p>If you have any questions, contact us at ambassadors@varpass.com.</p>
+		</div>
+
+		<section id="footerSection">
+			<div class="borderTop"></div>
+			<h3>VarPass</h3>
+			<img src="/public/images/favicon.png" alt="">
+		</section>
+
+	</body>
+</html>

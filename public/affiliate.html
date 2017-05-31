@@ -38,9 +38,12 @@
 			<b>When someone signs up using your link, we'll pay you 1/3 of the fee.</b></p>
 
 			<h3>We'll send you your referal link now.</h3>
-			<div id="inputContainer">
-				<input type="email" name="Email" value="" placeholder="Your email address">
-				<button type="button" name="button"><i class="fa fa-angle-right fa-3x"></i></button>
+			<div>
+				<form id="inputContainer" action="/notifyone" method="post">
+					<input class="emailInput" type="email" name="email" value="" placeholder="Your email address" required>
+					<input type="submit" class="submit" value="&#62;">
+				</form>
+
 			</div>
 
 

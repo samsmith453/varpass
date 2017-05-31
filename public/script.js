@@ -10,10 +10,18 @@ var queueDisplayPercentage = 60;
 $(document).ready(function(){
 
 	var path = window.location.pathname;
+
 	if(path == "/details"){ // if this is coming from the 'details' menu route, scroll to details
 		$('html, body').animate({
 			scrollTop: ($('#detailsSection').offset().top-10)
 		},100);
+	} else {
+		var affiliateCode = path.slice(1);
+		document.cookie = "code="+ affiliateCode +"; expires=30 Dec 2099 12:00:00 UTC; path=/;domain=varpass.com;";
+		//check if there is a cookie already
+		//check there is a code
+		// don't want blank to overwrite the cookie
+
 	}
 
 	$(".infoCircle").hover(function(){
