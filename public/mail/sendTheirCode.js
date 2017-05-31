@@ -3,7 +3,7 @@ module.exports = function(address, name, code){
 	//sends affiliate their code once signed up
 
 	var nodemailer = require("nodemailer");
-	var link = "varpass.com/" + code
+	var link = "varpass.com/?c=" + code
 
 	var smtpConfig = {
 		host: "smtp.zoho.com",

@@ -16,10 +16,6 @@ app.get("/", function(req, res){
 	res.sendFile(__dirname + "/public/index.html");
 });
 
-app.get("/:code", function(req, res){
-	res.sendFile(__dirname + "/public/index.html");
-});
-
 app.get("/affiliates", function(req, res){
 	res.sendFile(__dirname + "/public/affiliate.html");
 });

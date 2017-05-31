@@ -10,18 +10,16 @@ var queueDisplayPercentage = 60;
 $(document).ready(function(){
 
 	var path = window.location.pathname;
-
 	if(path == "/details"){ // if this is coming from the 'details' menu route, scroll to details
 		$('html, body').animate({
 			scrollTop: ($('#detailsSection').offset().top-10)
 		},100);
-	} else {
-		var affiliateCode = path.slice(1);
-		document.cookie = "code="+ affiliateCode +"; expires=30 Dec 2099 12:00:00 UTC; path=/;domain=varpass.com;";
-		//check if there is a cookie already
-		//check there is a code
-		// don't want blank to overwrite the cookie
+	}
 
+	var query = window.location.search;
+	var code = getQueryStringValue(query, "c");
+	if(code){
+		dealWithCookies(code);
 	}
 
 	$(".infoCircle").hover(function(){
@@ -172,4 +170,38 @@ function fillModal(id){
 	$("#modalText").html(modalFill[id].body);
 	$("#modalBox i").addClass(modalFill[id].icon);
 
+}
+
+function getQueryStringValue (str, key) {
+	return decodeURIComponent(str.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));
+}
+
+function dealWithCookies(code){
+	//if there is a code cookie already then do nothing
+	//don't overwrite the first cookie
+	var cookies = document.cookies;
+	var current = getCookie("code");
+	if(current){
+		// do nothing - cookie already exists
+	}
+	else {
+		// make new cookie with new code
+		document.cookie = "code="+code+"; expires=30 Dec 2099 12:00:00 UTC; path=/";
+	}
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
 }
