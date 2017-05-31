@@ -730,3 +730,83 @@ start of footer section*/
 	display: block;
 	margin: 0px auto 10px auto;
 }
+
+/*end of footerSection
+
+
+
+
+
+
+start of join section*/
+
+#joinSection{
+	width: 90%;
+	margin: auto;
+}
+
+#joinSection .row{
+	display: flex;
+	justify-content: space-around;
+}
+
+#joinSection .package{
+	width: 250px;
+
+}
+
+#joinSection .package h3{
+	font-family: var(--opens);
+}
+
+#joinSection .package p{
+	font-family: var(--nunito);
+	text-align: justify;
+	color: grey;
+	font-weight: 200;
+	padding-bottom: 15px;
+	border-bottom: rgba(88, 88, 88, 0.5) 1px solid;
+	height: 150px;
+}
+
+#joinSection > h4{
+	font-family: var(--nunito);
+	font-size: 20px;
+	font-weight: 200;
+}
+
+#joinSection > h4 > a{
+	font-family: var(--nunito);
+	color: DeepSkyBlue;
+	font-weight: 200;
+	letter-spacing: 1px;
+}
+
+#joinSection .package > h4{
+	font-family: var(--opens);
+	font-weight: 300;
+	color: grey;
+	height: 50px;
+}
+
+#joinSection .package > button{
+	display: block;
+	background-color: rgba(88, 88, 88, 0.3);
+
+	border: none;
+	width: 180px;
+	height: 50px;
+	border-radius: 4px;
+	font-size: 15px;
+	color: white;
+	font-family: var(--opens);
+	cursor: pointer;
+	letter-spacing: 3px;
+	margin: 30px auto;
+	text-align: center;
+}
+
+#joinSection .package > button:hover{
+	background-color: DeepSkyBlue;
+	transition: background-color 1s;
+}

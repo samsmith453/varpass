@@ -1,10 +1,10 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 
-var initialAffiliateInterest = require("./public/mail/initialAffiliateInterest.js");
-var sendTheirCode = require("./public/mail/sendTheirCode.js");
-var sendMeNewAffil = require("./public/mail/sendMeNewAffiliate.js");
-var generateCode = require("./public/generateAffiliateCode.js");
+var initialAffiliateInterest = require("./mail/initialAffiliateInterest.js");
+var sendTheirCode = require("./mail/sendTheirCode.js");
+var sendMeNewAffil = require("./mail/sendMeNewAffiliate.js");
+var generateCode = require("./generateAffiliateCode.js");
 
 require('dotenv').load();
 
@@ -13,19 +13,19 @@ var app = express();
 app.use("/public", express.static(__dirname + "/public"));
 
 app.get("/", function(req, res){
-	res.sendFile(__dirname + "/public/index.html");
+	res.sendFile(__dirname + "/public/html/index.html");
 });
 
 app.get("/affiliates", function(req, res){
-	res.sendFile(__dirname + "/public/affiliate.html");
+	res.sendFile(__dirname + "/public/html/affiliate.html");
 });
 
 app.get("/join", function(req, res){
-	res.sendFile(__dirname + "/public/join.html");
+	res.sendFile(__dirname + "/public/html/join.html");
 });
 
 app.get("/details", function(req, res){
-	res.sendFile(__dirname + "/public/index.html");
+	res.sendFile(__dirname + "/public/html/index.html");
 });
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -38,7 +38,7 @@ app.post("/notifyone", function(req, res){
 });
 
 app.get("/affiliatereg", function(req, res){
-	res.sendFile(__dirname + "/public/affiliatereg.html");
+	res.sendFile(__dirname + "/public/html/affiliatereg.html");
 });
 
 app.post("/regsubmission", function(req, res){
@@ -52,7 +52,7 @@ app.post("/regsubmission", function(req, res){
 });
 
 app.get("/newaffiliate", function(req, res){
-	res.sendFile(__dirname + "/public/newaffiliate.html");
+	res.sendFile(__dirname + "/public/html/newaffiliate.html");
 });
 
 var server = app.listen(process.env.PORT || 3000);
