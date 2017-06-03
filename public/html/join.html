@@ -7,12 +7,56 @@
 		<title>Join Varpass</title>
 		<link rel="icon" type="image/png" href="/public/images/favicon.png">
 		<link rel="stylesheet" href="/public/css/index.css">
+		<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+		<script src="/public/clientJS/termsFill.js" charset="utf-8"></script>
 
 		<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	</head>
 	<body>
+
+		<script type="text/javascript">
+			$(document).ready(function(){
+
+				$("#close").click(function(){
+					$("#modalUnderlay").click();
+				})
+
+				$("#modalUnderlay").click(function(e){
+					if(e.target == this){
+						$(this).css({"display": "none"});
+						$("body").css({"overflow-y": "auto"});
+					}
+				});
+
+				$(".tandc").click(function(){
+					var id = $(this).attr("id");
+					$("#modalUnderlay").css({"display": "block"});
+					$("body").css({"overflow-y": "hidden"});
+
+					fillModal(id);
+
+
+				});
+			});
+
+			function fillModal(id){
+
+				$("#modalBox > .modalHeader").text(termsFill[id].h3);
+				$("#modalText").html(termsFill[id].body);
+
+			}
+		</script>
+
+		<div id="modalUnderlay">
+			<div id="modalBox">
+				<div id="close">&#x2716</div>
+				<h3 class="modalHeader"></h3>
+					<div id="modalText"></div>
+			</div>
+		</div>
+
 		<menu>
 			<a href="/">HOME</a>
 
@@ -30,30 +74,92 @@
 
 		<section id="joinSection">
 
-			<h4>You can ask us anything at <a href="mailto:help@varpass.com">help@varpass.com</a></h4>
+			<div class="row">
+				<h4 class="askUs">You can ask us anything at <a href="mailto:help@varpass.com">help@varpass.com</a></h4>
+				<h4 class="askUs">Manchester University Students Only</h4>
+				<img src="/public/images/manchester.png" alt="">
+			</div>
 
 			<div class="row">
 				<div class="package">
 					<h3>VarPass FastTrack Pack</h3>
-					<p>From the moment you arrive, we'll take care of everything.
-					Bank account, visa collection, police registration, and any other problems you have.</p>
-					<h4>£129</h4>
-					<button type="button" name="button">Get this package</button>
+					<p class="packageDescription">From the moment you arrive, we'll take care of everything.
+					We can also deal with anything which you need arranging before you arrive.
+					We're here to help you.<br><br>
+
+							- Bank Account Setup <br>
+							- Police Registration Assistance <br>
+							- Visa Collection Guidance <br>
+							- Problems Insurance
+					</p>
+					<h4>£99</h4>
+					<form action="/fasttrack" method="POST">
+						<script
+							src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+							data-key="pk_test_tX6Vudqu9t7a3uBGJDiGKYrR"
+							data-amount="9900"
+							data-name="VarPass"
+							data-description="VarPass FastTrack"
+							data-locale="auto"
+							data-zip-code="true"
+							data-currency="gbp"
+							data-image="/public/images/favicon.png"
+							data-label="Join Varpass">
+							</script>
+					</form>
+					<p>By clicking 'Join VarPass' you are agreeing to our Terms and Conditions.
+					<span class="tandc" id="fasttrack">Pease read them here.</span></p>
 				</div>
 
 				<div class="package">
 					<h3>Problems Insurance</h3>
-					<p>You can go about things yourself, but if anything goes wrong and
-					you need help, you can give us a call.</p>
-					<h4>£29</h4>
-					<button type="button" name="button">Get this package</button>
+					<p class="packageDescription">We're here to help if anything goes wrong. Our Insurance package allows
+					you to get in touch with us at any time if you have any problems or questions, and
+					we will be available and ready to assist.<br><br>
+					If you lose your luggage, your accommodation isn't sorted or you just need to find
+					a place, we'll be ready to assist.</p>
+					<h4>£25</h4>
+					<form action="/insurance" method="POST">
+						<script
+							src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+							data-key="pk_test_tX6Vudqu9t7a3uBGJDiGKYrR"
+							data-amount="1900"
+							data-name="VarPass"
+							data-description="Problems Insurance"
+							data-locale="auto"
+							data-zip-code="true"
+							data-currency="gbp"
+							data-image="/public/images/favicon.png"
+							data-label="Join Varpass">
+						</script>
+					</form>
+					<p>By clicking 'Join VarPass' you are agreeing to our Terms and Conditions.
+					<span class="tandc" id="insurance">Pease read them here.</span></p>
 				</div>
 
 				<div class="package">
 					<h3>Bank Setup</h3>
-					<p>We'll organise the setup of your UK student bank account.</p>
+					<p class="packageDescription">Setting up your UK student bank account is one of the most important tasks
+						involved in moving to the UK. Queues are hours long and waiting lists for appointments will
+					are weeks away. <br><br>
+					We have a system for helping you avoid this wait, to get an account as quickly as possible.</p>
 					<h4>£39</h4>
-					<button type="button" name="button">Get this package</button>
+					<form action="/banking" method="POST">
+						<script
+							src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+							data-key="pk_test_tX6Vudqu9t7a3uBGJDiGKYrR"
+							data-amount="3900"
+							data-name="VarPass"
+							data-description="Banking Setup"
+							data-locale="auto"
+							data-zip-code="true"
+							data-currency="gbp"
+							data-image="/public/images/favicon.png"
+							data-label="Join Varpass">
+							</script>
+					</form>
+					<p>By clicking 'Join VarPass' you are agreeing to our Terms and Conditions.
+					<span class="tandc" id="banking">Pease read them here.</span></p>
 				</div>
 			</div>
 

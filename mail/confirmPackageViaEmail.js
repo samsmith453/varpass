@@ -1,24 +1,21 @@
-module.exports = function(address){
-
-	//sends me their email
-
+module.exports = function(package, email){
 	var nodemailer = require("nodemailer");
 
 	var smtpConfig = {
-		host: "smtp.gmail.com",
+		host: "smtp.zoho.com",
 		port: 465,
 		auth: {
-			user: "varpassnotify@gmail.com",
-			pass: process.env.NOTIFY_PASS
+			user: "careteam@varpass.com",
+			pass: process.env.ZOHO_PASS
 	   	}
 	};
 
 	var message = {
-	    from: 'varpassnotify@gmail.com',
-	    to: 'sam@varpass.com',
-	    subject: 'Affiliate interest',
-	    text: address,
-	    html: '<h2>'+address+'</h2>'
+	    from: 'careteam@varpass.com',
+	    to: email,
+	    subject: 'Congratulations! Welcome to VarPass',
+	    text: "Hi your package is " + package+".",
+	    html: '<h2> Hi '+package+' </h2>'
 	};
 
 	var transporter = nodemailer.createTransport(smtpConfig);
@@ -29,4 +26,4 @@ module.exports = function(address){
              console.log("Message sent: " + res.message);
          }
 	 });
-};
+}

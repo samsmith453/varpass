@@ -1,7 +1,4 @@
-module.exports = function(address){
-
-	//sends me their email
-
+module.exports = function(package, email, affilCode){
 	var nodemailer = require("nodemailer");
 
 	var smtpConfig = {
@@ -16,9 +13,9 @@ module.exports = function(address){
 	var message = {
 	    from: 'varpassnotify@gmail.com',
 	    to: 'sam@varpass.com',
-	    subject: 'Affiliate interest',
-	    text: address,
-	    html: '<h2>'+address+'</h2>'
+	    subject: 'New purchase',
+	    text: "email:"+email+" package:"+package+" code:"+affilCode,
+	    html: "<p>email:"+email+" package:"+package+" code:"+affilCode+"</p>"
 	};
 
 	var transporter = nodemailer.createTransport(smtpConfig);
@@ -29,4 +26,4 @@ module.exports = function(address){
              console.log("Message sent: " + res.message);
          }
 	 });
-};
+}

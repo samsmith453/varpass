@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Welcome to VarPass</title>
+		<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="icon" type="image/png" href="/public/images/favicon.png">
+		<link rel="stylesheet" href="/public/css/index.css">
+
+		<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	</head>
+	<body>
+		<menu>
+			<a href="/">HOME</a>
+
+			<a href="/details">DETAILS</a>
+
+			<div class="logo">
+				VarPass
+			</div>
+
+			<a href="/join" class="currentPage">JOIN US</a>
+
+			<a href="/affiliates">AFFILIATES</a>
+
+		</menu>
+
+		<script type="text/javascript">
+			$(document).ready(function(){
+				var query = window.location.search;
+				var packag = getQueryStringValue(query, "p");
+
+				if(packag == "insurance"){
+					var text = "Problems Insurance";
+				} else if(packag == "banking"){
+					var text = "Banking Setup";
+				} else if(packag == "fasttrack"){
+					var text = "VarPass FastTrack";
+				}
+
+				$("#package").text(text);
+			});
+
+			function getQueryStringValue (str, key) {
+				return decodeURIComponent(str.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));
+			}
+		</script>
+
+		<section id="welcome">
+			<h2>Welcome to VarPass!</h2>
+			<p>Your <span id="package"></span> Package is confirmed!
+			We will send you an email with further information very shortly.<p>
+		</section>
+
+
+		<section id="footerSection">
+			<div class="borderTop"></div>
+			<h3>VarPass</h3>
+			<img src="/public/images/favicon.png" alt="">
+		</section>
+	</body>
+</html>

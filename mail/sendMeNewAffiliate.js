@@ -14,7 +14,7 @@ module.exports = function(address, name, nation, code){
 	};
 
 	var message = {
-	    from: 'sam@deducation.co.uk', //change this email for random one
+	    from: 'varpassnotify@gmail.com',
 	    to: 'sam@varpass.com',
 	    subject: 'New affiliate',
 	    text: "email:"+address+" name:"+name+" nation:"+nation+" code:"+code,

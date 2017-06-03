@@ -5,10 +5,16 @@ var initialAffiliateInterest = require("./mail/initialAffiliateInterest.js");
 var sendTheirCode = require("./mail/sendTheirCode.js");
 var sendMeNewAffil = require("./mail/sendMeNewAffiliate.js");
 var generateCode = require("./generateAffiliateCode.js");
+var confirmTheirPackageViaEmail = require("./mail/confirmPackageViaEmail.js");
+var notifyMeOfPurchase = require("./mail/notifyMeOfPurchase.js");
+
+var stripe = require("stripe")("sk_test_Z5Pb2ovr2dpmSxWoawqsugYd");
+var cookieParser = require("cookie-parser");
 
 require('dotenv').load();
 
 var app = express();
+app.use(cookieParser());
 
 app.use("/public", express.static(__dirname + "/public"));
 
@@ -53,6 +59,65 @@ app.post("/regsubmission", function(req, res){
 
 app.get("/newaffiliate", function(req, res){
 	res.sendFile(__dirname + "/public/html/newaffiliate.html");
+});
+
+app.get("/joinvarpass", function(req, res){
+	res.sendFile(__dirname + "/public/html/joinvarpass.html");
+});
+
+app.post("/fasttrack", function(req, res){
+	var token = req.body.stripeToken;
+	var email = req.body.stripeEmail;
+	var affilCode = req.cookies.code;
+	if(!affilCode) affilCode = "none";
+	var charge = stripe.charges.create({
+		amount: 9900,
+		currency: "gbp",
+		description: "Fast track",
+		source: token,
+	}, function(err, charge) {
+	confirmTheirPackageViaEmail("fasttrack", email);
+	notifyMeOfPurchase("fasttrack", email, affilCode);
+	res.redirect("/welcome?p=fasttrack");
+	});
+});
+
+app.post("/insurance", function(req, res){
+	var token = req.body.stripeToken;
+	var email = req.body.stripeEmail;
+	var affilCode = req.cookies.code;
+	if(!affilCode) affilCode = "none";
+	var charge = stripe.charges.create({
+		amount: 1900,
+		currency: "gbp",
+		description: "Insurance",
+		source: token,
+	}, function(err, charge) {
+	confirmTheirPackageViaEmail("insurance", email);
+	notifyMeOfPurchase("insurance", email, affilCode);
+	res.redirect("/welcome?p=insurance");
+	});
+});
+
+app.post("/banking", function(req, res){
+	var token = req.body.stripeToken;
+	var email = req.body.stripeEmail;
+	var affilCode = req.cookies.code;
+	if(!affilCode) affilCode = "none";
+	var charge = stripe.charges.create({
+		amount: 3900,
+		currency: "gbp",
+		description: "Banking",
+		source: token,
+	}, function(err, charge) {
+	confirmTheirPackageViaEmail("banking", email);
+	notifyMeOfPurchase("banking", email, affilCode);
+	res.redirect("/welcome?p=banking");
+	});
+});
+
+app.get("/welcome", function(req, res){
+	res.sendFile(__dirname + "/public/html/welcome.html");
 });
 
 var server = app.listen(process.env.PORT || 3000);

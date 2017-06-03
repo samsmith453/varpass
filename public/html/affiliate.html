@@ -7,6 +7,8 @@
 		<title>VarPass - Ambassador Program</title>
 		<link rel="icon" type="image/png" href="/public/images/favicon.png">
 
+		<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+		<script src="/public/clientJS/termsFill.js" charset="utf-8"></script>
 		<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
 		<link rel="stylesheet" href="/public/css/index.css">
@@ -15,6 +17,49 @@
 
 	</head>
 	<body>
+
+		<div id="modalUnderlay">
+			<div id="modalBox">
+				<div id="close">&#x2716</div>
+				<h3 class="modalHeader"></h3>
+					<div id="modalText"></div>
+			</div>
+		</div>
+
+
+		<script type="text/javascript">
+			$(document).ready(function(){
+
+				$("#close").click(function(){
+					$("#modalUnderlay").click();
+				})
+
+				$("#modalUnderlay").click(function(e){
+					if(e.target == this){
+						$(this).css({"display": "none"});
+						$("body").css({"overflow-y": "auto"});
+					}
+				});
+
+				$(".tandc").click(function(){
+					var id = $(this).attr("id");
+					$("#modalUnderlay").css({"display": "block"});
+					$("body").css({"overflow-y": "hidden"});
+
+					fillModal(id);
+
+
+				});
+			});
+
+			function fillModal(id){
+
+				$("#modalBox > .modalHeader").text(termsFill[id].h3);
+				$("#modalText").html(termsFill[id].body);
+
+			}
+		</script>
+
 		<menu>
 			<a href="/">HOME</a>
 
@@ -31,6 +76,8 @@
 
 		<section id="affiliateSection">
 			<h2>Ambassador Program</h2>
+			<p>If you have any questions at all, please contact
+				<a href="mailto:ambassadors@varpass.com">ambassadors@varpass.com</a></p>
 			<p>We want to help as many International students as we can. To do that we need your help to tell
 			new students about VarPass. If you know anyone who is coming to the University of Manchester then
 			let them know about VarPass.</p>
@@ -46,6 +93,8 @@
 
 			</div>
 
+			<p id="tandccontainer">By completing this form you are agreeing to our Terms and Conditions.
+			<span class="tandc" id="affiliate">Pease read them here.</span></p>
 
 		</section>
 
