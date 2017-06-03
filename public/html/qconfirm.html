@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+
+		<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
+		<link rel="stylesheet" href="/public/css/index.css">
+
+		<link rel="icon" type="image/png" href="/public/images/favicon.png">
+		<title>Thank you for completing the questionaire</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				var query = window.location.search;
+				var n = getQueryStringValue(query, "n");
+				$("#name").text(n);
+			});
+
+			function getQueryStringValue (str, key) {
+				return decodeURIComponent(str.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));
+			}
+		</script>
+		<menu>
+			<a href="#" class="currentPage">HOME</a>
+
+			<a href="#">DETAILS</a>
+
+			<div class="logo">
+				VarPass
+			</div>
+
+			<a href="/join">JOIN US</a>
+
+			<a href="/affiliates">AFFILIATES</a>
+
+		</menu>
+		<section id="qconfirm">
+			<h3><span id="name"></span>, thank you for completing the questionaire!</h3>
+			<p>We'll be in touch very soon.</p>
+		</section>
+
+
+		<section id="footerSection">
+			<div class="borderTop"></div>
+			<h3>VarPass</h3>
+			<img src="/public/images/favicon.png" alt="">
+		</section>
+	</body>
+</html>

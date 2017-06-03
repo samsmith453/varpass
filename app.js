@@ -7,8 +7,9 @@ var sendMeNewAffil = require("./mail/sendMeNewAffiliate.js");
 var generateCode = require("./generateAffiliateCode.js");
 var confirmTheirPackageViaEmail = require("./mail/confirmPackageViaEmail.js");
 var notifyMeOfPurchase = require("./mail/notifyMeOfPurchase.js");
+var sendQResponse = require("./mail/sendQResponse.js");
 
-var stripe = require("stripe")("sk_test_Z5Pb2ovr2dpmSxWoawqsugYd");
+var stripe = require("stripe")(process.env.SK);
 var cookieParser = require("cookie-parser");
 
 require('dotenv').load();
@@ -76,7 +77,7 @@ app.post("/fasttrack", function(req, res){
 		description: "Fast track",
 		source: token,
 	}, function(err, charge) {
-	confirmTheirPackageViaEmail("fasttrack", email);
+	confirmTheirPackageViaEmail("FastTrack", email);
 	notifyMeOfPurchase("fasttrack", email, affilCode);
 	res.redirect("/welcome?p=fasttrack");
 	});
@@ -93,7 +94,7 @@ app.post("/insurance", function(req, res){
 		description: "Insurance",
 		source: token,
 	}, function(err, charge) {
-	confirmTheirPackageViaEmail("insurance", email);
+	confirmTheirPackageViaEmail("Problems Insurance", email);
 	notifyMeOfPurchase("insurance", email, affilCode);
 	res.redirect("/welcome?p=insurance");
 	});
@@ -110,7 +111,7 @@ app.post("/banking", function(req, res){
 		description: "Banking",
 		source: token,
 	}, function(err, charge) {
-	confirmTheirPackageViaEmail("banking", email);
+	confirmTheirPackageViaEmail("Bank Account Setup", email);
 	notifyMeOfPurchase("banking", email, affilCode);
 	res.redirect("/welcome?p=banking");
 	});
@@ -118,6 +119,21 @@ app.post("/banking", function(req, res){
 
 app.get("/welcome", function(req, res){
 	res.sendFile(__dirname + "/public/html/welcome.html");
+});
+
+app.get("/questionaire", function(req, res){
+	res.sendFile(__dirname + "/public/html/questionaire.html");
+});
+
+app.post("/qresponse", function(req, res){
+	var response = JSON.stringify(req.body);
+	var name = req.body.name;
+	sendQResponse(response);
+	res.redirect("/qconfirm?n="+name);
+});
+
+app.get("/qconfirm", function(req, res){
+	res.sendFile(__dirname + "/public/html/qconfirm.html");
 });
 
 var server = app.listen(process.env.PORT || 3000);

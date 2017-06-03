@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>VarPass Questionaire</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
+		<link rel="stylesheet" href="/public/css/index.css">
+		<link rel="icon" type="image/png" href="/public/images/favicon.png">
+		<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				var query = window.location.search;
+				var email = getQueryStringValue(query, "e");
+				var packag = getQueryStringValue(query, "p");
+				$("#package").val(packag);
+				$("#email").val(email);
+			});
+
+			function getQueryStringValue (str, key) {
+				return decodeURIComponent(str.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));
+			}
+		</script>
+
+		<section id="questionaire">
+			<h1>VarPass</h1>
+			<h3>If you have any questions or problems, please contact <a href="mailto:careteam@varpass.com">careteam@varpass.com</a></h3>
+			<form class="" action="/qresponse" method="post">
+				<input id="package" type="hidden" name="package" value="" required>
+				<input id="email" type="hidden" name="email" value="" required>
+
+				<input type="text" name="name" value="" placeholder="Your Name" required><br>
+				<input type="text" name="nationality" value="" placeholder="Nationality" required><br>
+				<input type="text" name="accommodation" value="" placeholder="Manchester Accommodation"><br>
+				<div class="selectContainer">
+					Year of Study
+					<select class="" name="study year" required="">
+						<option value="1">Year 1</option>
+						<option value="2">Year 2</option>
+						<option value="3">Year 3</option>
+						<option value="4">Year 4</option>
+						<option value="master">Masters/Postgraduate</option>
+					</select>
+				</div><br>
+				<input type="text" name="subject" value="" placeholder="Subject of Study"><br>
+				<button type="submit">Send</button>
+
+			</form>
+		</section>
+
+		<section id="footerSection">
+			<div class="borderTop"></div>
+			<h3>VarPass</h3>
+			<img src="/public/images/favicon.png" alt="">
+		</section>
+
+	</body>
+</html>
