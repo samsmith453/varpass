@@ -776,6 +776,10 @@ start of join section*/
 	margin: 0px 10px;
 }
 
+#joinSection .package#fasttrackpackage{
+	width: 300px;
+}
+
 @media only screen and (max-width: 600px){
 	#joinSection .package:nth-child(-n+2) {
 		margin-bottom: 60px;
@@ -788,6 +792,13 @@ start of join section*/
 
 #joinSection .package h3{
 	font-family: var(--opens);
+	font-weight: 300;
+}
+
+#joinSection .package#fasttrackpackage h3{
+	font-family: var(--opens);
+	font-weight: 600;
+	font-size: 25px;
 }
 
 #joinSection .package p{
@@ -795,7 +806,17 @@ start of join section*/
 	text-align: justify;
 	color: grey;
 	font-weight: 200;
+	padding-bottom: 38px;
+
+}
+
+#joinSection .package#fasttrackpackage p{
+	font-family: var(--nunito);
+	text-align: justify;
+	color: black;
+	font-weight: 300;
 	padding-bottom: 15px;
+	font-size: 18px;
 
 }
 
@@ -866,6 +887,11 @@ start of join section*/
 	text-decoration: underline;
 }
 
+#joinSection .package#fasttrackpackage p#fptandc{
+	font-weight: 200;
+	font-size: 16px;
+	color: grey;
+}
 
 #welcome {
 	width: 90%;

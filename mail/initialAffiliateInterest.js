@@ -5,16 +5,16 @@ module.exports = function(address){
 	var nodemailer = require("nodemailer");
 
 	var smtpConfig = {
-		host: "smtp.gmail.com",
+		host: "smtp.zoho.com",
 		port: 465,
 		auth: {
-			user: "varpassnotify@gmail.com",
-			pass: process.env.NOTIFY_PASS
+			user: "sam@deducation.co.uk",
+			pass: process.env.ZOHO_PASS
 	   	}
 	};
 
 	var message = {
-	    from: 'varpassnotify@gmail.com',
+	    from: 'sam@deducation.co.uk',
 	    to: 'sam@varpass.com',
 	    subject: 'Affiliate interest',
 	    text: address,
