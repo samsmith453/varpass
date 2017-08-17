@@ -1,4 +1,4 @@
-module.exports = function(package, email, affilCode){
+module.exports = function(packag, email, affilCode){
 	var nodemailer = require("nodemailer");
 
 	var smtpConfig = {
@@ -14,8 +14,8 @@ module.exports = function(package, email, affilCode){
 	    from: 'sam@deducation.co.uk',
 	    to: 'sam@varpass.com',
 	    subject: 'New purchase',
-	    text: "email:"+email+" package:"+package+" code:"+affilCode,
-	    html: "<p>email:"+email+" package:"+package+" code:"+affilCode+"</p>"
+	    text: "email:"+email+" package:"+packag+" code:"+affilCode,
+	    html: "<p>email:"+email+" package:"+packag+" code:"+affilCode+"</p>"
 	};
 
 	var transporter = nodemailer.createTransport(smtpConfig);

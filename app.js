@@ -9,10 +9,10 @@ var confirmTheirPackageViaEmail = require("./mail/confirmPackageViaEmail.js");
 var notifyMeOfPurchase = require("./mail/notifyMeOfPurchase.js");
 var sendQResponse = require("./mail/sendQResponse.js");
 
+require('dotenv').load();
+
 var stripe = require("stripe")(process.env.SK);
 var cookieParser = require("cookie-parser");
-
-require('dotenv').load();
 
 var app = express();
 app.use(cookieParser());
@@ -72,48 +72,49 @@ app.post("/fasttrack", function(req, res){
 	var affilCode = req.cookies.code;
 	if(!affilCode) affilCode = "none";
 	var charge = stripe.charges.create({
-		amount: 9900,
+		amount: 3500,
 		currency: "gbp",
 		description: "Fast track",
 		source: token,
 	}, function(err, charge) {
-	confirmTheirPackageViaEmail("FastTrack", email);
+	confirmTheirPackageViaEmail("VarPass FastTrack Membership", email);
 	notifyMeOfPurchase("fasttrack", email, affilCode);
 	res.redirect("/welcome?p=fasttrack");
 	});
 });
 
-app.post("/insurance", function(req, res){
+app.post("/remote", function(req, res){
 	var token = req.body.stripeToken;
 	var email = req.body.stripeEmail;
 	var affilCode = req.cookies.code;
 	if(!affilCode) affilCode = "none";
 	var charge = stripe.charges.create({
-		amount: 1900,
+		amount: 2500,
 		currency: "gbp",
-		description: "Insurance",
+		description: "VarPass Remote",
 		source: token,
 	}, function(err, charge) {
-	confirmTheirPackageViaEmail("Problems Insurance", email);
-	notifyMeOfPurchase("insurance", email, affilCode);
-	res.redirect("/welcome?p=insurance");
+		if(err) throw err;
+		confirmTheirPackageViaEmail("Remote Assitance", email);
+		notifyMeOfPurchase("remote", email, affilCode);
+		res.redirect("/welcome?p=remote");
 	});
 });
 
-app.post("/banking", function(req, res){
+app.post("/premium", function(req, res){
 	var token = req.body.stripeToken;
 	var email = req.body.stripeEmail;
 	var affilCode = req.cookies.code;
 	if(!affilCode) affilCode = "none";
 	var charge = stripe.charges.create({
-		amount: 3900,
+		amount: 5900,
 		currency: "gbp",
-		description: "Banking",
+		description: "VarPass Premium Member",
 		source: token,
 	}, function(err, charge) {
-	confirmTheirPackageViaEmail("Bank Account Setup", email);
-	notifyMeOfPurchase("banking", email, affilCode);
-	res.redirect("/welcome?p=banking");
+	confirmTheirPackageViaEmail("Premium VarPass Membership", email);
+	notifyMeOfPurchase("premium", email, affilCode);
+	res.redirect("/welcome?p=premium");
 	});
 });
 
@@ -134,6 +135,17 @@ app.post("/qresponse", function(req, res){
 
 app.get("/qconfirm", function(req, res){
 	res.sendFile(__dirname + "/public/html/qconfirm.html");
+});
+
+app.get("/tours", function(req, res){
+	res.sendFile(__dirname + "/public/html/tours.html");
+});
+
+app.post("/booktour", function(req, res){
+	//send them confirmation
+	//send me details
+	var details = req.body;
+	res.redirect("/tourconfirm");
 });
 
 var server = app.listen(process.env.PORT || 3000);

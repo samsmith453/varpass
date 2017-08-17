@@ -12,6 +12,8 @@ var modalFill = {
 	},
 
 	Banking: {
+
+		//October only
 		h3: "Bank Account Setup",
 		body: "<p>Setting up a bank account as an International Student in the UK is a challenge. In Manchester \
 		there is a 2 week waiting list at popular banks, leaving you without an account. That means you cannot \

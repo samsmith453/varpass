@@ -26,7 +26,7 @@
 
 			<a href="/join" class="currentPage">JOIN US</a>
 
-			<a href="/affiliates">AFFILIATES</a>
+			<a href="/tours">TOURS</a>
 
 		</menu>
 
@@ -35,12 +35,12 @@
 				var query = window.location.search;
 				var packag = getQueryStringValue(query, "p");
 
-				if(packag == "insurance"){
-					var text = "Problems Insurance";
-				} else if(packag == "banking"){
-					var text = "Banking Setup";
+				if(packag == "remote"){
+					var text = "Remote Assistance";
 				} else if(packag == "fasttrack"){
-					var text = "VarPass FastTrack";
+					var text = "VarPass FastTrack Membership";
+				} else if(packag == "premium"){
+					var text = "VarPass Premium Membership";
 				}
 
 				$("#package").text(text);
