@@ -13,6 +13,19 @@
 		<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,600" rel="stylesheet">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-84604049-3', 'auto');
+		  ga('send', 'pageview');
+
+		</script>
+
 	</head>
 	<body>
 
@@ -84,11 +97,10 @@
 
 				<div class="package">
 					<h3>Remote Assistance</h3>
-					<p class="packageDescription">We're here to help if anything goes wrong. Our Insurance package allows
-					you to get in touch with us at any time if you have any problems or questions, and
-					we will be available and ready to assist.<br><br>
-					If you lose your luggage, your accommodation isn't sorted or you just need to find
-					a place, we'll be ready to assist.</p>
+					<p class="packageDescription">If anything goes wrong you can give us a call 24 hours
+						a day and we'll be able to offer you expert advice to resolve your issues.<br><br>
+					If you lose your luggage, your accommodation isn't sorted or you just can't find the answer to your questions,
+					we'll be ready to assist.</p>
 					<h4>£25</h4>
 					<form action="/remote" method="POST">
 						<script
@@ -110,14 +122,15 @@
 
 				<div class="package" id="fasttrackpackage">
 					<h3>FastTrack Member</h3>
-					<p class="packageDescription">From the moment you arrive, we'll take care of everything.
-					We can also deal with anything which you need arranging before you arrive.
-					We're here to help you.<br><br>
+					<p class="packageDescription">
+						Our Fast Track members can make use of our expert staff, who
+						will attend to their needs whenever it is needed. We can guide
+						you around campous, showing you tips and tricks to skip queues,
+						and solve your problems.<br><br>
 
-							- Bank Account Setup <br>
-							- Police Registration Assistance <br>
-							- Visa Collection Guidance <br>
-							- Problems Insurance
+							- Personal Care and Assistance <br>
+							- Hands-on Help <br>
+							- Priority Attention
 					</p>
 					<h4>£35</h4>
 					<form action="/fasttrack" method="POST">
@@ -140,10 +153,15 @@
 
 				<div class="package">
 					<h3>Premium VarPass Member</h3>
-					<p class="packageDescription">Setting up your UK student bank account is one of the most important tasks
-						involved in moving to the UK. Queues are hours long and waiting lists for appointments will
-					are weeks away. <br><br>
-					We have a system for helping you avoid this wait, to get an account as quickly as possible.</p>
+					<p class="packageDescription">From the moment you arrive, we'll take care of everything.
+					We can also deal with anything which you need arranging before you arrive.
+					We're here to help you.<br><br>
+
+							- Bank Account Setup <br>
+							- Police Registration Assistance <br>
+							- Visa Collection Guidance <br>
+							- Accommodation Problems
+					</p>
 					<h4>£59</h4>
 					<form action="/premium" method="POST">
 						<script
